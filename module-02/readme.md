@@ -1,15 +1,12 @@
-# Домашнее задание для курса [Analytics Engineering](https://github.com/Data-Learn/data-engineering/blob/master/DE%20-%20101%20Guide.md)
+## Домашнее задание для курса [Analytics Engineering](https://github.com/Data-Learn/data-engineering/blob/master/DE%20-%20101%20Guide.md)
 
 
 
-## :rocket: [Модуль 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Базы данных и SQL
-
-
-## :ledger: Содержание
+### :rocket: [Модуль 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Базы данных и SQL
 - [Загрузка данных](#загрузка-данных)
 - [Запросы - вывод метрик](#запросы-вывод-метрик)
 
-## :heavy_check_mark: Загрузка данных <a name="загрузка-данных"></a>
+### :heavy_check_mark: Загрузка данных <a name="загрузка-данных"></a>
 - [x] Загрузка orders
 ```
 DROP TABLE IF EXISTS orders;
@@ -67,7 +64,7 @@ INSERT INTO returns(Returned,Order_id) VALUES ('Yes','CA-2016-100762');
 ...
 ```
 
-## :heavy_check_mark: Запросы - вывод метрик <a name="запросы-вывод-метрик"></a>
+### :heavy_check_mark: Запросы - вывод метрик <a name="запросы-вывод-метрик"></a>
 - [x] Total Sales, Total Profit, Profit Ratio, Profit per Order, Avg. Discount
 ```
 select 
