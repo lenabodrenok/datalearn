@@ -2,9 +2,8 @@
 
 
 ## :ledger: Содержание
-- [Файлы sql]()
 - [Загрузка данных](#загрузка-данных)
-- [Создание таблиц](#создание-таблиц)
+- [Создание таблиц - вывод метрик](#создание-таблиц)
 
 ## :heavy_check_mark: Загрузка данных <a name="загрузка-данных"></a>
 - [x] Загрузка orders:
@@ -64,8 +63,7 @@ INSERT INTO returns(Returned,Order_id) VALUES ('Yes','CA-2016-100762');
 ...
 ```
 
-
-## :heavy_check_mark: Создание таблиц <a name="создание-таблиц"></a>
+## :heavy_check_mark: Создание таблиц - вывод метрик <a name="создание-таблиц"></a>
 - [x] Total Sales, Total Profit, Profit Ratio, Profit per Order, Avg. Discount:
 ```
 select 
