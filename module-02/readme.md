@@ -1,4 +1,8 @@
-# Домашнее задание для [Модуля 02: Базы данных и SQL](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md)
+# Домашнее задание для курса [Analytics Engineering](https://github.com/Data-Learn/data-engineering/blob/master/DE%20-%20101%20Guide.md)
+
+
+
+## :rocket: [Модуль 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Базы данных и SQL
 
 
 ## :ledger: Содержание
@@ -6,7 +10,7 @@
 - [Создание таблиц - вывод метрик](#создание-таблиц)
 
 ## :heavy_check_mark: Загрузка данных <a name="загрузка-данных"></a>
-- [x] Загрузка orders:
+- [x] Загрузка orders
 ```
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders(
@@ -38,7 +42,7 @@ INSERT INTO orders(Row_ID,Order_ID,Order_Date,Ship_Date,Ship_Mode,Customer_ID,Cu
 ...
 ...
 ```
-- [x] Загрузка people:
+- [x] Загрузка people
 ```
 DROP TABLE IF EXISTS people;
 CREATE TABLE people(
@@ -50,7 +54,7 @@ INSERT INTO people(Person,Region) VALUES ('Chuck Magee','East');
 INSERT INTO people(Person,Region) VALUES ('Kelly Williams','Central');
 INSERT INTO people(Person,Region) VALUES ('Cassandra Brandow','South');
 ```
-- [x] Загрузка returns:
+- [x] Загрузка returns
 ```
 DROP TABLE IF EXISTS returns;
 CREATE TABLE returns(
@@ -64,7 +68,7 @@ INSERT INTO returns(Returned,Order_id) VALUES ('Yes','CA-2016-100762');
 ```
 
 ## :heavy_check_mark: Создание таблиц - вывод метрик <a name="создание-таблиц"></a>
-- [x] Total Sales, Total Profit, Profit Ratio, Profit per Order, Avg. Discount:
+- [x] Total Sales, Total Profit, Profit Ratio, Profit per Order, Avg. Discount
 ```
 select 
 round(sum(sales)) as total_sales, 
@@ -74,7 +78,7 @@ round(sum(profit)/count(order_id)) as profit_per_order,
 round(AVG(discount)*100) as avg_discount
 from orders
 ```
-- [x] Sales per Customer, Profit per Customer:
+- [x] Sales per Customer, Profit per Customer
 ```
 select 
 customer_name,
@@ -84,7 +88,7 @@ from orders
 group by customer_name
 order by customer_sales DESC, customer_total desc
 ```
-- [x] Sales per region:
+- [x] Sales per region
 ```
 select 
 region,
@@ -93,7 +97,7 @@ from orders
 group by region 
 order by region_sales DESC
 ```
-- [x] Monthly Sales by Segment:
+- [x] Monthly Sales by Segment
 ```
 select 
 segment,
@@ -102,7 +106,7 @@ from orders
 group by segment
 order by montly_sales_segment DESC
 ```
-- [x] Monthly Sales by Product Category:
+- [x] Monthly Sales by Product Category
 ```
 select 
 category,
