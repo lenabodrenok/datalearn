@@ -1,10 +1,10 @@
-## :rocket: [Модуль 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Базы данных и SQL 
-- [Загрузка данных](#загрузка-данных)
-- [Запросы - вывод метрик](#запросы-вывод-метрик)
-- [Модели Данных](#модели-данных)
+## :rocket: [Module 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Databases and SQL 
+- [Loading data](#loading-data)
+- [Requests - output of metrics](#requests-output-metrics)
+- [Data Models](#data-models)
 
-### :heavy_check_mark: Загрузка данных <a name="загрузка-данных"></a>
-- [x] Загрузка orders
+### :heavy_check_mark: Loading data <a name="loading-data"></a>
+- [x] Loading 'orders'
 ```
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders(
@@ -36,7 +36,7 @@ INSERT INTO orders(Row_ID,Order_ID,Order_Date,Ship_Date,Ship_Mode,Customer_ID,Cu
 ...
 ...
 ```
-- [x] Загрузка people
+- [x] Loading 'people'
 ```
 DROP TABLE IF EXISTS people;
 CREATE TABLE people(
@@ -48,7 +48,7 @@ INSERT INTO people(Person,Region) VALUES ('Chuck Magee','East');
 INSERT INTO people(Person,Region) VALUES ('Kelly Williams','Central');
 INSERT INTO people(Person,Region) VALUES ('Cassandra Brandow','South');
 ```
-- [x] Загрузка returns
+- [x] Loading 'returns'
 ```
 DROP TABLE IF EXISTS returns;
 CREATE TABLE returns(
@@ -61,7 +61,7 @@ INSERT INTO returns(Returned,Order_id) VALUES ('Yes','CA-2016-100762');
 ...
 ```
 
-### :heavy_check_mark: Запросы - вывод метрик <a name="запросы-вывод-метрик"></a>
+### :heavy_check_mark: Requests - output of metrics <a name="requests-output-metrics"></a>
 - [x] Total Sales, Total Profit, Profit Ratio, Profit per Order, Avg. Discount
 ```
 select 
