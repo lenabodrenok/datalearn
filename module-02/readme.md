@@ -1,8 +1,4 @@
-## Домашнее задание для курса [Analytics Engineering](https://github.com/Data-Learn/data-engineering/blob/master/DE%20-%20101%20Guide.md)
-
-
-
-### :rocket: [Модуль 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Базы данных и SQL
+## :rocket: [Модуль 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Базы данных и SQL 
 - [Загрузка данных](#загрузка-данных)
 - [Запросы - вывод метрик](#запросы-вывод-метрик)
 - [Модели Данных](#модели-данных)
