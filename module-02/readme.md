@@ -5,6 +5,7 @@
 ### :rocket: [Модуль 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Базы данных и SQL
 - [Загрузка данных](#загрузка-данных)
 - [Запросы - вывод метрик](#запросы-вывод-метрик)
+- []()
 
 ### :heavy_check_mark: Загрузка данных <a name="загрузка-данных"></a>
 - [x] Загрузка orders
