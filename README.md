@@ -1,4 +1,4 @@
-## Homework assignments for the course  [Analytics Engineering](https://github.com/Data-Learn/data-engineering/blob/master/DE%20-%20101%20Guide.md) by [DataLearn](https://datalearn.ru/)
+## Homework for the course  [Analytics Engineering](https://github.com/Data-Learn/data-engineering/blob/master/DE%20-%20101%20Guide.md) by [DataLearn](https://datalearn.ru/)
 
 
 - [Module 01]
