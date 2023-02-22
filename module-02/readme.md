@@ -111,5 +111,12 @@ order by montly_sales_category DESC
 ```
 ### :heavy_check_mark: Data Models <a name="data-models"></a>
 
-Conceptual data model
-Physical data model
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Conceptual data model 
+
+<img title="Conceptual data model" src="/module-02/Conceptual data model.png">    
+
+
+### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Physical data model 
+
+<img title="Physical data model" src="/module-02/Physical data model.png">    
+
