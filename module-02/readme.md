@@ -66,50 +66,52 @@ INSERT INTO returns(Returned,Order_id) VALUES ('Yes','CA-2016-100762');
 ### :heavy_check_mark: Requests - output of metrics <a name="requests-output-metrics"></a>
 - [x] Total Sales, Total Profit, Profit Ratio, Profit per Order, Avg. Discount
 ```
-select 
-round(sum(sales)) as total_sales, 
-round(sum(profit)) as total_profit,
-round(sum(profit)/sum(sales)*100) as profit_ratio,
-round(sum(profit)/count(order_id)) as profit_per_order,
-round(AVG(discount)*100) as avg_discount
-from orders
+SELECT
+	round(sum(sales)) AS total_sales,
+	round(sum(profit)) AS total_profit,
+	round(sum(profit)/ sum(sales)* 100) AS profit_ratio,
+	round(sum(profit)/ count(order_id)) AS profit_per_order,
+	round(AVG(discount)* 100) AS avg_discount
+FROM orders
 ```
 - [x] Sales per Customer, Profit per Customer
 ```
-select 
-customer_name,
-round(sum(sales)) as customer_sales,
-round(sum(profit)) as customer_total
-from orders
-group by customer_name
-order by customer_sales DESC, customer_total desc
+SELECT
+	customer_name,
+	round(sum(sales)) AS customer_sales,
+	round(sum(profit)) AS customer_total
+FROM orders
+GROUP BY customer_name
+ORDER BY
+	customer_sales DESC,
+	customer_total DESC
 ```
 - [x] Sales per region
 ```
-select 
-region,
-round(sum(sales)) as region_sales
-from orders
-group by region 
-order by region_sales DESC
+SELECT
+	region,
+	round(sum(sales)) AS region_sales
+FROM orders
+GROUP BY region
+ORDER BY region_sales DESC
 ```
 - [x] Monthly Sales by Segment
 ```
-select 
-segment,
-round(sum(sales)) as montly_sales_segment
-from orders
-group by segment
-order by montly_sales_segment DESC
+SELECT
+	segment,
+	round(sum(sales)) AS montly_sales_segment
+FROM orders
+GROUP BY segment
+ORDER BY montly_sales_segment DESC
 ```
 - [x] Monthly Sales by Product Category
 ```
-select 
-category,
-round(sum(sales)) as montly_sales_category
-from orders
-group by category 
-order by montly_sales_category DESC
+SELECT
+	category,
+	round(sum(sales)) AS montly_sales_category
+FROM orders
+GROUP BY category
+ORDER BY montly_sales_category DESC
 ```
 ### :heavy_check_mark: Data Models <a name="data-models"></a>
 
@@ -127,22 +129,26 @@ order by montly_sales_category DESC
 CREATE TABLE shipping
 (ship_id   serial primary key NOT NULL,
  ship_mode varchar(15) NOT NULL);
-
+```
+```
 CREATE TABLE person
 (person_id   serial primary key NOT NULL,
  person_name varchar(50) NOT NULL);
-
+```
+```
 CREATE TABLE customer
 (customer_id   varchar(10) NOT NULL,
  customer_name varchar(50) NOT NULL,
  segment       varchar(20) NOT NULL);
-
+```
+```
 CREATE TABLE product
 (product_id   varchar(20) NOT NULL,
  product_name varchar(150) NOT NULL,
  category     varchar(20) NOT NULL,
  sub_category varchar(20) NOT NULL);
-
+```
+```
 CREATE TABLE order_item
 (order_item_id  serial primary key NOT NULL,
  product_id     varchar(20) NOT NULL,
@@ -151,7 +157,8 @@ CREATE TABLE order_item
  discount       numeric(4,2) NOT NULL,
  profit         numeric(21,16) NOT NULL,
  order_id       varchar(30) NOT NULL);
-
+```
+```
 CREATE TABLE geography
 (geo_id      serial primary key NOT NULL,
  country     varchar(20) NOT NULL,
@@ -160,11 +167,13 @@ CREATE TABLE geography
  state       varchar(20) NOT NULL,
  city        varchar(20) NOT NULL,
  postal_code varchar(10) NULL);
-
+```
+```
 CREATE TABLE returned_status
 (order_item_id int NOT NULL,
  returned      boolean NOT NULL);
-
+```
+```
 CREATE TABLE orders_all
 (order_id      varchar(30) NOT NULL,
  order_date    date NOT NULL,
@@ -173,4 +182,110 @@ CREATE TABLE orders_all
  ship_id       int NOT NULL,
  customer_id   varchar(10) NOT NULL);
 ```
-
+### :heavy_check_mark: INSERT INTO <a name="insert-into"></a>
+```
+INSERT INTO shipping (ship_mode)
+SELECT DISTINCT ship_mode
+FROM orders;
+```
+```   
+INSERT INTO person (person_name)
+SELECT DISTINCT person
+FROM people;
+```   
+```   
+INSERT INTO customer (
+		customer_id,
+		customer_name,
+		segment)
+SELECT
+	DISTINCT customer_id,
+	customer_name,
+	segment
+FROM orders;
+```   
+```   
+INSERT INTO product (
+		product_id,
+		product_name,
+		category,
+		sub_category)
+SELECT
+	DISTINCT product_id,
+	product_name,
+	category,
+	subcategory
+FROM orders;
+```   
+```   
+INSERT INTO geography (
+		country,
+		person_id,
+		region,
+		state,
+		city,
+		postal_code)
+SELECT
+	country,
+	person_id,
+	orders.region,
+	state,
+	city,
+	postal_code
+FROM orders
+JOIN people ON orders.region = people.region
+JOIN person ON person.person_name = people.person
+GROUP BY
+	postal_code,
+	orders.country,
+	person_id,
+	orders.region,
+	orders.state,
+	orders.city;
+ ```  
+ ```  
+INSERT INTO order_item (
+		product_id,
+		order_quantity,
+		sales,
+		discount,
+		profit,
+		order_id)
+SELECT
+	product_id,
+	quantity,
+	sales,
+	discount,
+	profit,
+	order_id
+FROM orders
+ORDER BY order_id;
+```   
+```   
+INSERT INTO orders_all (
+		order_id,
+		order_date,
+		ship_date,
+		geo_id,
+		ship_id,
+		customer_id)
+SELECT
+	orders.order_id,
+	orders.order_date,
+	orders.ship_date,
+	geo_id,
+	ship_id,
+	orders.customer_id
+FROM orders
+JOIN geography ON orders.postal_code = geography.postal_code
+JOIN shipping ON orders.ship_mode = shipping.ship_mode
+JOIN customer ON orders.customer_id = customer.customer_id
+GROUP BY
+	orders.order_id,
+	orders.order_date,
+	orders.ship_date,
+	geo_id,
+	ship_id,
+	orders.customer_id
+ORDER BY order_id;
+```
