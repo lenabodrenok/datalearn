@@ -109,4 +109,7 @@ from orders
 group by category 
 order by montly_sales_category DESC
 ```
+### :heavy_check_mark: Data Models <a name="data-models"></a>
 
+Conceptual data model
+Physical data model
