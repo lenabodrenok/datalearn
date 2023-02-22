@@ -1,7 +1,9 @@
 ## :rocket: [Module 02](https://github.com/Data-Learn/data-engineering/blob/master/DE-101%20Modules/Module02/readme.md) Databases and SQL 
 - [Loading data](#loading-data)
 - [Requests - output of metrics](#requests-output-metrics)
-- [Data Models](#data-models)
+- [Data models](#data-models)
+- [CREATE TABLE](#create-table)
+- [INSERT INTO](#insert-into)
 
 ### :heavy_check_mark: Loading data <a name="loading-data"></a>
 - [x] Loading 'orders'
@@ -119,4 +121,56 @@ order by montly_sales_category DESC
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Physical data model 
 
 <img title="Physical data model" src="/module-02/Physical data model.png">    
+
+### :heavy_check_mark: CREATE TABLE <a name="create-table"></a>
+```
+CREATE TABLE shipping
+(ship_id   serial primary key NOT NULL,
+ ship_mode varchar(15) NOT NULL);
+
+CREATE TABLE person
+(person_id   serial primary key NOT NULL,
+ person_name varchar(50) NOT NULL);
+
+CREATE TABLE customer
+(customer_id   varchar(10) NOT NULL,
+ customer_name varchar(50) NOT NULL,
+ segment       varchar(20) NOT NULL);
+
+CREATE TABLE product
+(product_id   varchar(20) NOT NULL,
+ product_name varchar(150) NOT NULL,
+ category     varchar(20) NOT NULL,
+ sub_category varchar(20) NOT NULL);
+
+CREATE TABLE order_item
+(order_item_id  serial primary key NOT NULL,
+ product_id     varchar(20) NOT NULL,
+ order_quantity int NOT NULL,
+ sales          numeric(9,4) NOT NULL,
+ discount       numeric(4,2) NOT NULL,
+ profit         numeric(21,16) NOT NULL,
+ order_id       varchar(30) NOT NULL);
+
+CREATE TABLE geography
+(geo_id      serial primary key NOT NULL,
+ country     varchar(20) NOT NULL,
+ person_id   int NOT NULL,
+ region      varchar(20) NOT NULL,
+ state       varchar(20) NOT NULL,
+ city        varchar(20) NOT NULL,
+ postal_code varchar(10) NULL);
+
+CREATE TABLE returned_status
+(order_item_id int NOT NULL,
+ returned      boolean NOT NULL);
+
+CREATE TABLE orders_all
+(order_id      varchar(30) NOT NULL,
+ order_date    date NOT NULL,
+ ship_date     date NOT NULL,
+ geo_id        int NOT NULL,
+ ship_id       int NOT NULL,
+ customer_id   varchar(10) NOT NULL);
+```
 
